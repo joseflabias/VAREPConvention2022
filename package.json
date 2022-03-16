@@ -13,5 +13,9 @@
   "license": "",
   "peerDependencies": {
     "react-native": "0.61.5"
+  },
+  "dependencies": {
+    "react-native-qrcode-svg": "^6.1.2",
+    "react-native-svg": "^12.3.0"
   }
 }
