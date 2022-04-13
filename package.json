@@ -13,5 +13,10 @@
   "license": "",
   "peerDependencies": {
     "react-native": "0.61.5"
+  },
+  "dependencies": {
+    "@vseslav/react-native-horizontal-picker": "^0.1.1",
+    "react-native-qrcode-svg": "^6.1.2",
+    "react-native-svg": "^12.3.0"
   }
 }
