@@ -1,0 +1,14 @@
+{
+    "sat": [{
+        "title": "CA CE Military & Veterans Housing Certifications (MVHC)",
+        "type": "MVHC",
+        "startTime": "9:00AM",
+        "time": "9:00 AM to 3:00 PM",
+        "location": "Regatta ABC",
+        "sponsors": ["wf", "chase"],
+        "speakers": [0, 1]
+    }],
+    "sun": [],
+    "mon": []
+
+}

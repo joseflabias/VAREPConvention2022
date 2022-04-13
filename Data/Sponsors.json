@@ -1,0 +1,14 @@
+{
+    "chase": {
+        "name": "Chase Bank",
+        "logo": "chase.svg"
+    },
+    "wf": {
+        "name": "Wells Fargo Bank",
+        "logo": "wf.svg"
+    },
+    "bof": {
+        "name": "Bank of America",
+        "logo": "bofa.svg"
+    }
+}
