@@ -1,8 +1,10 @@
-
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import QRCode from "react-native-qrcode-svg";
 import ScheduleScreen from "./Screens/Schedule";
+import FastImage from "react-native-fast-image";
+
+import ActivitiesScreen from "@src/containers/Custom/ActivitiesScreen";
+import { DEVICE_WIDTH } from "@src/styles/global";
 
 export const applyCustomCode = (externalCodeSetup) => {
   // call custom code api here
@@ -27,15 +29,27 @@ export const applyCustomCode = (externalCodeSetup) => {
     "ProfilePhotos",
     (props) => {
       return (
-        <View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              props.navigation.navigate("TestScreen");
-            }}
-          >
-            <Text>Press Here</Text>
-          </TouchableOpacity>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginTop: 50, alignSelf: "center" }}>
+            <FastImage
+              style={{ width: DEVICE_WIDTH, height: 110, marginBottom: 10 }}
+              source={{
+                uri: "https://varep.net/wp-content/uploads/2020/12/s5_logo-1.png",
+              }}
+            />
+          </View>
+
+          <View style={{ flex: 1 }}>
+            <ActivitiesScreen
+              {...props}
+              headerHeight={50}
+              screenTitle="Activity List"
+              showSearch={false}
+              hideFilters={true}
+              hideTitle={true}
+              hideNavigationHeader={true}
+            />
+          </View>
         </View>
       );
     }
@@ -49,4 +63,3 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-
