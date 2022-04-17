@@ -18,6 +18,40 @@ export const applyCustomCode = (externalCodeSetup) => {
       fontSize: 30,
     },
   };
+  EventActivity.navigationOptions = {
+    title: "FEED",
+    headerStyle: {
+      backgroundColor: "#C0223E",
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+  QRPass.navigationOptions = {
+    title: "QR CODE",
+    headerStyle: {
+      backgroundColor: "#C0223E",
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+  SponsorScreen.navigationOptions = {
+    title: "SPONSORS",
+    headerStyle: {
+      backgroundColor: "#C0223E",
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+
   externalCodeSetup.navigationApi.addNavigationRoute(
     "ScheduleScreen",
     "ScheduleScreen",
@@ -42,12 +76,12 @@ export const applyCustomCode = (externalCodeSetup) => {
     SponsorScreen,
     "Main"
   );
-  
 
-const styles = StyleSheet.create({
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10,
-  },
-});
+  const styles = StyleSheet.create({
+    button: {
+      alignItems: "center",
+      backgroundColor: "#DDDDDD",
+      padding: 10,
+    },
+  });
+};

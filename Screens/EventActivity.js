@@ -16,18 +16,6 @@ export default function EventActivity() {
           }}
         />
       </View>
-
-      <View style={{ flex: 1 }}>
-        <ActivitiesScreen
-          {...props}
-          headerHeight={50}
-          screenTitle="Activity List"
-          showSearch={false}
-          hideFilters={true}
-          hideTitle={true}
-          hideNavigationHeader={true}
-        />
-      </View>
     </View>
   );
 }
