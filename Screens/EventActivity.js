@@ -1,8 +1,32 @@
-import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
 import ActivitiesScreen from "@src/containers/Custom/ActivitiesScreen";
 import FastImage from "react-native-fast-image";
-import { DEVICE_WIDTH } from "@src/styles/global";
+import Icon from "react-native-vector-icons/dist/MaterialIcons";
+import { DEVICE_WIDTH, DEVICE_HEIGHT } from "@src/styles/global";
+
+import { ErrorBoundary } from "react-native-error-boundary";
+
+const myErrorHandler = (error) => {
+  // Do something with the error
+  // E.g. reporting errorr using sentry ( see part 3)
+  console.log(error);
+};
+function ErrorFallback({ resetErrorBoundary }) {
+  return (
+    <View style={[styles.container]}>
+      <View>
+        <Text> Something went wrong: </Text>
+        <Button title="try Again" onPress={resetErrorBoundary} />
+      </View>
+    </View>
+  );
+}
+export const ErrorHandler = ({ children }) => (
+  <ErrorBoundary FallbackComponent={ErrorFallback} onError={myErrorHandler}>
+    {children}
+  </ErrorBoundary>
+);
 
 export default function EventActivity(props) {
   const [randomNumber, setRandomNumber] = useState(
@@ -53,6 +77,13 @@ export default function EventActivity(props) {
           hideNavigationHeader={true}
         />
       </View>
+
+      <TouchableOpacity
+        style={styles.postButton}
+        onPress={() => props.navigation.push("ActivitiesCreatePostScreen")}
+      >
+        <Icon name="add-circle" size={50} />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -67,5 +98,19 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "Roboto Slab",
     fontWeight: "bold",
+  },
+  postButton: {
+    position: "absolute",
+    left: DEVICE_WIDTH - 55,
+    right: 0,
+    top: 100,
+  },
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "stretch",
+    justifyContent: "center",
+    alignContent: "center",
+    paddingHorizontal: 12,
   },
 });
