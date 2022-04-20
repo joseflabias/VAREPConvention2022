@@ -12,7 +12,7 @@
   "author": "",
   "license": "",
   "peerDependencies": {
-    "react-native": "0.61.5"
+    "react-native": "^0.68.1"
   },
   "dependencies": {
     "@vseslav/react-native-horizontal-picker": "^0.1.1",
