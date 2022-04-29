@@ -5,8 +5,6 @@ import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import { DEVICE_WIDTH, DEVICE_HEIGHT } from "@src/styles/global";
 
-import { ErrorBoundary } from "react-native-error-boundary";
-
 
 export default function EventActivity(props) {
   const [randomNumber, setRandomNumber] = useState(
