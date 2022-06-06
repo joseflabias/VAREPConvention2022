@@ -5,28 +5,6 @@ import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import { DEVICE_WIDTH, DEVICE_HEIGHT } from "@src/styles/global";
 
-import { ErrorBoundary } from "react-native-error-boundary";
-
-const myErrorHandler = (error) => {
-  // Do something with the error
-  // E.g. reporting errorr using sentry ( see part 3)
-  console.log(error);
-};
-function ErrorFallback({ resetErrorBoundary }) {
-  return (
-    <View style={[styles.container]}>
-      <View>
-        <Text> Something went wrong: </Text>
-        <Button title="try Again" onPress={resetErrorBoundary} />
-      </View>
-    </View>
-  );
-}
-export const ErrorHandler = ({ children }) => (
-  <ErrorBoundary FallbackComponent={ErrorFallback} onError={myErrorHandler}>
-    {children}
-  </ErrorBoundary>
-);
 
 export default function EventActivity(props) {
   const [randomNumber, setRandomNumber] = useState(
