@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react";
 import HorizontalPicker from "@vseslav/react-native-horizontal-picker";
 import AllSessions from "../Components/Schedule/AllSessions";
+import Icon from "react-native-vector-icons/dist/MaterialIcons";
 
 const dates = [
   { id: 0, day: "Sunday", number: 16 },
@@ -36,7 +37,7 @@ export default function ScheduleScreen() {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View style={{ backgroundColor: "rgba(145, 144, 144, 0.7)" }}>
         <HorizontalPicker
           data={dates}
