@@ -5,7 +5,6 @@ import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import { DEVICE_WIDTH, DEVICE_HEIGHT } from "@src/styles/global";
 
-
 export default function EventActivity(props) {
   const [randomNumber, setRandomNumber] = useState(
     "https://varep.net/wp-content/uploads/2020/12/s5_logo-1.png"
@@ -88,7 +87,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "stretch",
     justifyContent: "center",
-    alignContent: "center",
     paddingHorizontal: 12,
   },
 });

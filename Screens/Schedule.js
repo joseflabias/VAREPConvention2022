@@ -16,7 +16,7 @@ const dates = [
   { id: 2, day: "Tuesday", number: 18 },
 ];
 
-export default function ScheduleScreen() {
+export default function ScheduleScreen(props) {
   const [activeItem, setActiveItem] = useState(0);
   const [activeMenu, setActiveMenu] = useState("event");
 
@@ -96,7 +96,7 @@ export default function ScheduleScreen() {
           </Text>
         </TouchableOpacity>
       </View>
-      <AllSessions date={activeItem} />
+      <AllSessions {...props} date={dates[activeItem].number} />
     </View>
   );
 }

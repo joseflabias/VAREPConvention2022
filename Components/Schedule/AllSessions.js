@@ -1,61 +1,80 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FastImage from "react-native-fast-image";
-import Icon from "react-native-vector-icons/FontAwesome5";
-const Dates = {
-  sat: 0,
-  sun: 1,
-  mon: 2,
-};
+import Icon from "react-native-vector-icons/dist/MaterialIcons";
 
-export default function AllSessions({ date }) {
-  const [allSessions, setAllSessions] = useState();
-  axios.get("https://varep.net/wp-json/varepcc/v1/sessions").then((resp) => {
-    setAllSessions(resp.data.sessions);
-  });
+export default function AllSessions({ date, navigation }) {
+  const [allSessions, setAllSessions] = useState(null);
   useEffect(() => {
-    if (allSessions) {
-      console.log(allSessions[date]);
-    }
+    const fetchData = async () => {
+      const result = await axios(
+        `https://varep.net/wp-json/varepcc/v1/sessions/${date}`
+      );
+
+      setAllSessions(result.data);
+    };
+
+    fetchData();
   }, [date]);
 
   const Item = ({ item }) => {
+    const a = item.Start.split(" ");
+    const d = a[0].split("-");
+    const t = a[1].split(":");
+    const formattedStart = new Date(d[0], d[1] - 1, d[2], t[0], t[1], t[2]);
     return (
       <View style={styles.item}>
-        <View style={styles.itemHeader}>
-          <FastImage
-            style={styles.sponsorBanner}
-            source={{
-              uri: `https://varep.net/media/convention/sessions/${item.type.toLowerCase()}.png`,
-              priority: FastImage.priority.normal,
-            }}
-            resizeMode={FastImage.resizeMode.contain}
-          />
-          <Text style={styles.itemTitle}>{item.title}</Text>
-        </View>
-        <View
-          style={{
-            justifyContent: "center",
-            alignContent: "center ",
-            alignItems: "center",
-          }}
-        >
-          <Text>
-            {item.type} · {item.time} · {item.location}
+        <View style={styles.timeBanner}>
+          <Text style={styles.timeText}>
+            {formattedStart.toLocaleTimeString("en-US")}
           </Text>
         </View>
-        <Icon name="comments" size={30} color="#900" />
+        <TouchableOpacity
+          onPress={() =>
+            navigation.push("SessionScreen", { sessionID: item.SessionID })
+          }
+        >
+          <View style={styles.itemHeader}>
+            <FastImage
+              style={styles.sponsorBanner}
+              source={{
+                uri: `https://varep.net/media/convention/sessions/${item.Type.toLowerCase()}.png`,
+                priority: FastImage.priority.normal,
+              }}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+            <Text style={styles.itemTitle}>{item.Title}</Text>
+            <Icon name="chevron-right" size={50} />
+          </View>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text>
+              {item.Type} · {item.Location}
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   };
   return (
     <View>
-      {allSessions && (
+      {allSessions != null && (
         <FlatList
+          data={allSessions}
           style={{ paddingHorizontal: 20, marginTop: 5 }}
-          data={allSessions[date]}
           renderItem={Item}
+          keyExtractor={(item) => item.SessionID}
         />
       )}
     </View>
@@ -83,5 +102,19 @@ const styles = StyleSheet.create({
     borderColor: "#808080",
     paddingBottom: 20,
     borderBottomWidth: 1,
+  },
+  timeBanner: {
+    width: "100%",
+    justifyContent: "center",
+    backgroundColor: "#808080",
+    color: "#fff",
+    alignContent: "center",
+    height: 40,
+  },
+  timeText: {
+    color: "#fff",
+    fontFamily: "Liberator",
+    marginLeft: 20,
+    fontSize: 20,
   },
 });

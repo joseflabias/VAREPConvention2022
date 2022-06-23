@@ -4,6 +4,7 @@ import ScheduleScreen from "./Screens/Schedule";
 import QRPass from "./Screens/QRPass";
 import EventActivity from "./Screens/EventActivity";
 import SponsorScreen from "./Screens/SponsorScreen";
+import SessionScreen from "./Screens/SessionScreen";
 
 export const applyCustomCode = (externalCodeSetup) => {
   // call custom code api here
@@ -51,6 +52,17 @@ export const applyCustomCode = (externalCodeSetup) => {
       fontSize: 30,
     },
   };
+  SessionScreen.navigationOptions = {
+    title: "Session Details",
+    headerStyle: {
+      backgroundColor: "#C0223E",
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
 
   externalCodeSetup.navigationApi.addNavigationRoute(
     "ScheduleScreen",
@@ -75,6 +87,12 @@ export const applyCustomCode = (externalCodeSetup) => {
     "SponsorScreen",
     SponsorScreen,
     "Main"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "SessionScreen",
+    "SessionScreen",
+    SessionScreen,
+    "All"
   );
 
   const styles = StyleSheet.create({

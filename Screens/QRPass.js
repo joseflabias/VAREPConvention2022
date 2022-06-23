@@ -11,7 +11,6 @@ export default function QRPass({ screenProps }) {
     email: user.user_email,
   };
 
-  console.log(user);
   const stringObj = JSON.stringify(userInfo);
   return (
     <View style={{ flex: 1, justifyContent: "center" }}>
