@@ -28,12 +28,15 @@ export default function AllSessions({ date, navigation }) {
     const a = item.Start.split(" ");
     const d = a[0].split("-");
     const t = a[1].split(":");
-    const formattedStart = new Date(d[0], d[1] - 1, d[2], t[0], t[1], t[2]);
+    const formattedStart = new Date(d[0], d[1] - 1, d[2], t[0], t[1]);
     return (
       <View style={styles.item}>
         <View style={styles.timeBanner}>
           <Text style={styles.timeText}>
-            {formattedStart.toLocaleTimeString("en-US")}
+            {formattedStart.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </Text>
         </View>
         <TouchableOpacity
@@ -60,7 +63,7 @@ export default function AllSessions({ date, navigation }) {
             }}
           >
             <Text>
-              {item.Type} · {item.Location}
+              {item.Type.toLowerCase()} · Location: {item.Location}
             </Text>
           </View>
         </TouchableOpacity>
@@ -72,7 +75,7 @@ export default function AllSessions({ date, navigation }) {
       {allSessions != null && (
         <FlatList
           data={allSessions}
-          style={{ paddingHorizontal: 20, marginTop: 5 }}
+          style={{ paddingHorizontal: 10, marginTop: 5 }}
           renderItem={Item}
           keyExtractor={(item) => item.SessionID}
         />
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
   sponsorBanner: {
     width: 75,
     height: 75,
-    marginVertical: 5,
+    marginVertical: 1,
   },
   itemHeader: {
     flexDirection: "row",
