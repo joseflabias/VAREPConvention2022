@@ -4,11 +4,13 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 import SessionDetails from "../Components/Schedule/SessionDetails";
+import { BASE_URL } from "../config";
 
 function convertDate(date) {
   const a = date.split(" ");
@@ -24,10 +26,10 @@ export default function SessionScreen({ navigation }) {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
-    const sessionURL = `https://varep.net/wp-json/varepcc/v1/sessions/id/${sessionID}`;
-    const sponsorURL = `https://varep.net/wp-json/varepcc/v1/sponsors/${sessionID}`;
-    const presenterURL = `https://varep.net/wp-json/varepcc/v1/sessions/presenters/${sessionID}`;
-    const speakerURL = `https://varep.net/wp-json/varepcc/v1/sessions/speakers/${sessionID}`;
+    const sessionURL = `${BASE_URL}/sessions/id/${sessionID}`;
+    const sponsorURL = `${BASE_URL}/sponsors/${sessionID}`;
+    const presenterURL = `${BASE_URL}/sessions/presenters/${sessionID}`;
+    const speakerURL = `${BASE_URL}/sessions/speakers/${sessionID}`;
 
     const requestSession = axios.get(sessionURL);
     const requestSponsor = axios.get(sponsorURL);
@@ -58,8 +60,8 @@ export default function SessionScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1 }}>
-      {!isLoaded && <Text>Loading...</Text>}
-      {isLoaded && <SessionDetails props={session} />}
+      {!isLoaded && <Text> Please Wait. Loading....</Text>}
+      {isLoaded && <SessionDetails props={[session, navigation]} />}
     </View>
   );
 }

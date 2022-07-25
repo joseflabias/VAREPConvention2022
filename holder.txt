@@ -1,0 +1,40 @@
+<View style={styles.timeBanner}>
+          <Text style={styles.timeText}>
+            {item.Start.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+          </Text>
+        </View>
+
+        
+        <TouchableOpacity
+          onPress={() =>
+            navigation.push("SessionScreen", {
+              sessionID: item.SessionID,
+            })
+          }
+        >
+          <View style={styles.itemHeader}>
+            <FastImage
+              style={styles.sponsorBanner}
+              source={{
+                uri: `https://varep.net/media/convention/sessions/${item.Type.toLowerCase()}.png`,
+                priority: FastImage.priority.normal,
+              }}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+            <Text style={styles.itemTitle}>{item.Title}</Text>
+            <Icon name="chevron-right" size={50} />
+          </View>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text>
+              {item.Type.toLowerCase()} · Location: {item.Location}
+            </Text>
+          </View>
+        </TouchableOpacity>

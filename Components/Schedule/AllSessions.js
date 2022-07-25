@@ -9,14 +9,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/dist/MaterialIcons";
+import { BASE_URL } from "../../config";
 
 export default function AllSessions({ date, navigation }) {
   const [allSessions, setAllSessions] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        `https://varep.net/wp-json/varepcc/v1/sessions/${date}`
-      );
+      const result = await axios(`${BASE_URL}/sessions/${date}`);
 
       setAllSessions(result.data);
     };
@@ -41,7 +40,9 @@ export default function AllSessions({ date, navigation }) {
         </View>
         <TouchableOpacity
           onPress={() =>
-            navigation.push("SessionScreen", { sessionID: item.SessionID })
+            navigation.push("SessionScreen", {
+              sessionID: item.SessionID,
+            })
           }
         >
           <View style={styles.itemHeader}>

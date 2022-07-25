@@ -5,13 +5,16 @@ import QRPass from "./Screens/QRPass";
 import EventActivity from "./Screens/EventActivity";
 import SponsorScreen from "./Screens/SponsorScreen";
 import SessionScreen from "./Screens/SessionScreen";
+import Notes from "./Screens/Notes";
+
+import { HEADER_COLOR } from "./config";
 
 export const applyCustomCode = (externalCodeSetup) => {
   // call custom code api here
   ScheduleScreen.navigationOptions = {
     title: "SCHEDULE",
     headerStyle: {
-      backgroundColor: "#C0223E",
+      backgroundColor: HEADER_COLOR,
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
@@ -22,7 +25,19 @@ export const applyCustomCode = (externalCodeSetup) => {
   EventActivity.navigationOptions = {
     title: "FEED",
     headerStyle: {
-      backgroundColor: "#C0223E",
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+  Notes.navigationOptions = {
+    title: "NOTES",
+    headerBackTitle: null,
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
@@ -33,7 +48,7 @@ export const applyCustomCode = (externalCodeSetup) => {
   QRPass.navigationOptions = {
     title: "QR CODE",
     headerStyle: {
-      backgroundColor: "#C0223E",
+      backgroundColor: HEADER_COLOR,
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
@@ -44,7 +59,7 @@ export const applyCustomCode = (externalCodeSetup) => {
   SponsorScreen.navigationOptions = {
     title: "SPONSORS",
     headerStyle: {
-      backgroundColor: "#C0223E",
+      backgroundColor: HEADER_COLOR,
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
@@ -55,7 +70,7 @@ export const applyCustomCode = (externalCodeSetup) => {
   SessionScreen.navigationOptions = {
     title: "Session Details",
     headerStyle: {
-      backgroundColor: "#C0223E",
+      backgroundColor: HEADER_COLOR,
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
@@ -92,6 +107,12 @@ export const applyCustomCode = (externalCodeSetup) => {
     "SessionScreen",
     "SessionScreen",
     SessionScreen,
+    "All"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "Notes",
+    "Notes",
+    Notes,
     "All"
   );
 

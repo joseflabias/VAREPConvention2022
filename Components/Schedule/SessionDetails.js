@@ -7,34 +7,41 @@ import {
 } from "react-native";
 import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/dist/MaterialIcons";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-community/async-storage";
+import { WEEKDAYS, MONTHS, YEAR } from "../../config";
 
 export default function SessionDetails({ props }) {
-  const session = props;
-  console.log(session);
-  const weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const month = [
-    "Jan.",
-    "Feb.",
-    "Mar.",
-    "Apr.",
-    "May",
-    "Jun.",
-    "Jul.",
-    "Aug.",
-    "Sep.",
-    "Oct.",
-    "Nov.",
-    "Dec.",
-  ];
+  const session = props[0];
+  const navigation = props[1];
+
+  const [saved, setSaved] = useState(false);
+
+  const saveToMySchedule = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(`@${YEAR}_MY_SESSIONS}`);
+      const obj = jsonValue ? JSON.parse(jsonValue) : {};
+
+      if (obj[session.Start.getDate()] != null) {
+        if (
+          !obj[session.Start.getDate()].some(
+            (element) => element.SessionID == session.SessionID
+          )
+        ) {
+          obj[session.Start.getDate()].push(session);
+        }
+      } else {
+        obj[session.Start.getDate()] = [session];
+      }
+
+      await AsyncStorage.setItem(`@${YEAR}_MY_SESSIONS}`, JSON.stringify(obj));
+
+      setSaved(true);
+    } catch (error) {
+      console.log("hello from errors", error);
+    }
+  };
+
   return (
     <ScrollView>
       <View style={styles.imgContainer}>
@@ -49,7 +56,7 @@ export default function SessionDetails({ props }) {
         <Text style={styles.titleText}>{session.Title}</Text>
         <Text style={styles.locationText}>{session.Location}</Text>
         <Text style={styles.timeText}>
-          {weekday[session.Start.getDay()]}, {month[session.Start.getMonth()]}{" "}
+          {WEEKDAYS[session.Start.getDay()]}, {MONTHS[session.Start.getMonth()]}{" "}
           {session.Start.getDate()},{" "}
           {session.Start.toLocaleTimeString([], {
             hour: "2-digit",
@@ -63,16 +70,26 @@ export default function SessionDetails({ props }) {
         </Text>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.push("Notes", {
+              session: session,
+            });
+          }}
+        >
           <View style={styles.button}>
             <Icon name="note-add" size={43} />
             <Text style={styles.buttonText}>Add Notes</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={saveToMySchedule}>
           <View>
             <View style={styles.button}>
-              <Icon name="add-alert" size={43} />
+              <Icon
+                name="add-alert"
+                size={43}
+                color={saved ? "#ff0000" : "#000"}
+              />
               <Text style={styles.buttonText}>Add to My Schedule</Text>
             </View>
           </View>
