@@ -10,7 +10,7 @@ import QRPass from "./Screens/QRPass";
 import EventActivity from "./Screens/EventActivity";
 import SponsorScreen from "./Screens/SponsorScreen";
 import SessionScreen from "./Screens/SessionScreen";
-import Notes from "./Screens/Notes";
+// import Notes from "./Screens/Notes";
 
 import {
   HEADER_COLOR
@@ -40,18 +40,18 @@ export const applyCustomCode = (externalCodeSetup) => {
       fontSize: 30,
     },
   };
-  Notes.navigationOptions = {
-    title: "NOTES",
-    headerBackTitle: null,
-    headerStyle: {
-      backgroundColor: HEADER_COLOR,
-    },
-    headerTintColor: "#fff",
-    headerTitleStyle: {
-      fontFamily: "Liberator",
-      fontSize: 30,
-    },
-  };
+  // Notes.navigationOptions = {
+  //   title: "NOTES",
+  //   headerBackTitle: null,
+  //   headerStyle: {
+  //     backgroundColor: HEADER_COLOR,
+  //   },
+  //   headerTintColor: "#fff",
+  //   headerTitleStyle: {
+  //     fontFamily: "Liberator",
+  //     fontSize: 30,
+  //   },
+  // };
   QRPass.navigationOptions = {
     title: "QR CODE",
     headerStyle: {
