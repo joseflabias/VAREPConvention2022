@@ -1,5 +1,10 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet
+} from "react-native";
 import ScheduleScreen from "./Screens/Schedule";
 import QRPass from "./Screens/QRPass";
 import EventActivity from "./Screens/EventActivity";
@@ -7,7 +12,9 @@ import SponsorScreen from "./Screens/SponsorScreen";
 import SessionScreen from "./Screens/SessionScreen";
 import Notes from "./Screens/Notes";
 
-import { HEADER_COLOR } from "./config";
+import {
+  HEADER_COLOR
+} from "./config";
 
 export const applyCustomCode = (externalCodeSetup) => {
   // call custom code api here
@@ -109,12 +116,12 @@ export const applyCustomCode = (externalCodeSetup) => {
     SessionScreen,
     "All"
   );
-  externalCodeSetup.navigationApi.addNavigationRoute(
-    "Notes",
-    "Notes",
-    Notes,
-    "All"
-  );
+  // externalCodeSetup.navigationApi.addNavigationRoute(
+  //   "Notes",
+  //   "Notes",
+  //   Notes,
+  //   "All"
+  // );
 
   const styles = StyleSheet.create({
     button: {

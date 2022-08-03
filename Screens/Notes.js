@@ -1,8 +1,5 @@
 import {
-  Button,
   Keyboard,
-  KeyboardAvoidingView,
-  Platform,
   StyleSheet,
   Text,
   TextInput,
