@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import HorizontalPicker from "@vseslav/react-native-horizontal-picker";
 import AllSessions from "../Components/Schedule/AllSessions";
-// import MySessions from "../Components/Schedule/MySessions";
+import MySessions from "../Components/Schedule/MySessions";
 
 const dates = [
   { id: 0, day: "Sunday", number: 16 },
@@ -17,7 +17,7 @@ const dates = [
 ];
 /*
 
-<MySessions {...props} date={dates[activeItem].number} />
+
 
 */
 export default function ScheduleScreen(props) {
@@ -105,9 +105,7 @@ export default function ScheduleScreen(props) {
         <AllSessions {...props} date={dates[activeItem].number} />
       )}
       {activeMenu == "me" && (
-        <View>
-          <Text>Testing</Text>
-        </View>
+        <MySessions {...props} date={dates[activeItem].number} />
       )}
       {activeMenu == "speaker" && <Text>Speakers</Text>}
     </View>
