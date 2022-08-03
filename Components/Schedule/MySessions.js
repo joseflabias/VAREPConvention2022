@@ -132,6 +132,7 @@ export default function MySessions({ date, navigation }) {
           <View
             style={{
               alignItems: "center",
+              alignContent: "center",
               paddingTop: 30,
             }}
           >
@@ -178,6 +179,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#808080",
     color: "#fff",
+    alignContent: "center",
     height: 40,
   },
   timeText: {
