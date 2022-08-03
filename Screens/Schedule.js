@@ -15,7 +15,11 @@ const dates = [
   { id: 1, day: "Monday", number: 17 },
   { id: 2, day: "Tuesday", number: 18 },
 ];
+/*
 
+<MySessions {...props} date={dates[activeItem].number} />
+
+*/
 export default function ScheduleScreen(props) {
   const [activeItem, setActiveItem] = useState(0);
   const [activeMenu, setActiveMenu] = useState("event");
@@ -100,9 +104,11 @@ export default function ScheduleScreen(props) {
       {activeMenu == "event" && (
         <AllSessions {...props} date={dates[activeItem].number} />
       )}
-      {/* {activeMenu == "me" && (
-        <MySessions {...props} date={dates[activeItem].number} />
-      )} */}
+      {activeMenu == "me" && (
+        <View>
+          <Text>Testing</Text>
+        </View>
+      )}
       {activeMenu == "speaker" && <Text>Speakers</Text>}
     </View>
   );
