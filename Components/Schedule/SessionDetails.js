@@ -72,10 +72,9 @@ export default function SessionDetails({ props }) {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => {
-            // navigation.push("Notes", {
-            //   session: session,
-            // });
-            console.log("testing...");
+            navigation.push("Notes", {
+              session: session,
+            });
           }}
         >
           <View style={styles.button}>
