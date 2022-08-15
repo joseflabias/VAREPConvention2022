@@ -1,5 +1,5 @@
 {
-  "name": "appboss-custom-code",
+  "name": "buddyboss-custom-code",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,12 +12,15 @@
   "author": "",
   "license": "",
   "peerDependencies": {
-    "react-native": "0.61.5"
-
+    "react-native": "^0.68.1"
   },
   "dependencies": {
+    "@vseslav/react-native-horizontal-picker": "^0.1.1",
+    "react-native-error-boundary": "^1.1.13",
     "react-native-qrcode-svg": "^6.1.2",
-    "react-native-svg": "^12.3.0"
-
-  }
+    "react-native-svg": "^12.3.0",
+    "react-native-vector-icons": "^9.1.0"
+  },
+  "homepage": "https://buddyboss.com",
+  "summary": "Repo used to extend the BuddyBoss app using hooks"
 }

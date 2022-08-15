@@ -1,47 +1,133 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import QRCode from "react-native-qrcode-svg";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet
+} from "react-native";
+import ScheduleScreen from "./Screens/Schedule";
+import QRPass from "./Screens/QRPass";
+import EventActivity from "./Screens/EventActivity";
+import SponsorScreen from "./Screens/SponsorScreen";
+import SessionScreen from "./Screens/SessionScreen";
+import Notes from "./Screens/Notes";
 
-const TestScreen = (props) => {
-  console.log(props);
-  return (
-    <View>
-      <QRCode value="http://awesome.link.qr" />
-    </View>
-  );
-};
+import {
+  HEADER_COLOR
+} from "./config";
+
 export const applyCustomCode = (externalCodeSetup) => {
   // call custom code api here
+  ScheduleScreen.navigationOptions = {
+    title: "SCHEDULE",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+  EventActivity.navigationOptions = {
+    title: "FEED",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+  Notes.navigationOptions = {
+    title: "NOTES",
+    headerBackTitle: null,
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+  QRPass.navigationOptions = {
+    title: "QR CODE",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+  SponsorScreen.navigationOptions = {
+    title: "SPONSORS",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+  SessionScreen.navigationOptions = {
+    title: "Session Details",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "Liberator",
+      fontSize: 30,
+    },
+  };
+
   externalCodeSetup.navigationApi.addNavigationRoute(
-    "testScreen",
-    "TestScreen",
-    TestScreen,
+    "ScheduleScreen",
+    "ScheduleScreen",
+    ScheduleScreen,
+    "Main"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "QRPass",
+    "QRPass",
+    QRPass,
+    "Main"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "EventActivity",
+    "EventActivity",
+    EventActivity,
+    "Main"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "SponsorScreen",
+    "SponsorScreen",
+    SponsorScreen,
+    "Main"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "SessionScreen",
+    "SessionScreen",
+    SessionScreen,
     "All"
   );
-  externalCodeSetup.navigationApi.replaceScreenComponent(
-    "ProfilePhotos",
-    (props) => {
-      return (
-        <View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              props.navigation.navigate("testScreen");
-            }}
-          >
-            <Text>Press Here</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "Notes",
+    "Notes",
+    Notes,
+    "All"
   );
+
+  const styles = StyleSheet.create({
+    button: {
+      alignItems: "center",
+      backgroundColor: "#DDDDDD",
+      padding: 10,
+    },
+  });
 };
-
-const styles = StyleSheet.create({
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10,
-  },
-});
-
