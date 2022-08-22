@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 
 import React from "react";
+import { HEADER_COLOR } from "../config";
 
 export default function QRPass({ screenProps }) {
   const user = screenProps.auth.user;
@@ -36,7 +37,7 @@ export default function QRPass({ screenProps }) {
 
 const styles = StyleSheet.create({
   qrCard: {
-    backgroundColor: "#C0223E",
+    backgroundColor: HEADER_COLOR,
     marginBottom: 140,
     marginHorizontal: 20,
     borderRadius: 50,

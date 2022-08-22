@@ -2,7 +2,7 @@
 export const YEAR = 2022
 
 /* Header Color for Pages */
-export const HEADER_COLOR = "#C0223E"
+export const HEADER_COLOR = "#18325a"
 
 /* MONTHS Array Used for Start/End Times */
 export const MONTHS = [
@@ -32,4 +32,7 @@ export const WEEKDAYS = [
 ];
 
 /* Base Endpoint for API Calls */
-export const BASE_URL = "https://varep.net/wp-json/varepcc/v1"
+export const API_BASE_URL = "https://varep.net/wp-json/varepcc/v1"
+
+/* Base Endpoint for Speaker Image */
+export const SPEAKER_BASE_URL = "https://varep.net/media/convention/speakers/"
