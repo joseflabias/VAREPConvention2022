@@ -1,16 +1,9 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 import SessionDetails from "../Components/Schedule/SessionDetails";
-import { BASE_URL } from "../config";
+import { API_BASE_URL } from "../config";
 
 function convertDate(date) {
   const a = date.split(" ");
@@ -26,10 +19,10 @@ export default function SessionScreen({ navigation }) {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
-    const sessionURL = `${BASE_URL}/sessions/id/${sessionID}`;
-    const sponsorURL = `${BASE_URL}/sponsors/${sessionID}`;
-    const presenterURL = `${BASE_URL}/sessions/presenters/${sessionID}`;
-    const speakerURL = `${BASE_URL}/sessions/speakers/${sessionID}`;
+    const sessionURL = `${API_BASE_URL}/sessions/id/${sessionID}`;
+    const sponsorURL = `${API_BASE_URL}/sponsors/${sessionID}`;
+    const presenterURL = `${API_BASE_URL}/sessions/presenters/${sessionID}`;
+    const speakerURL = `${API_BASE_URL}/sessions/speakers/${sessionID}`;
 
     const requestSession = axios.get(sessionURL);
     const requestSponsor = axios.get(sponsorURL);

@@ -9,13 +9,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/dist/MaterialIcons";
-import { BASE_URL } from "../../config";
+import { API_BASE_URL } from "../../config";
 
 export default function AllSessions({ date, navigation }) {
   const [allSessions, setAllSessions] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`${BASE_URL}/sessions/${date}`);
+      const result = await axios(`${API_BASE_URL}/sessions/${date}`);
 
       setAllSessions(result.data);
     };

@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import HorizontalPicker from "@vseslav/react-native-horizontal-picker";
 import AllSessions from "../Components/Schedule/AllSessions";
 import MySessions from "../Components/Schedule/MySessions";
+import Speakers from "../Components/Schedule/Speakers";
 
 const dates = [
   { id: 0, day: "Sunday", number: 16 },
@@ -107,7 +108,7 @@ export default function ScheduleScreen(props) {
       {activeMenu == "me" && (
         <MySessions {...props} date={dates[activeItem].number} />
       )}
-      {activeMenu == "speaker" && <Text>Speakers</Text>}
+      {activeMenu == "speaker" && <Speakers />}
     </View>
   );
 }
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
   menuContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "rgba(192, 34, 62, 0.4)",
+    backgroundColor: "rgba(9, 20, 35, 0.4)",
     paddingVertical: 15,
   },
   buttonContainer: {
