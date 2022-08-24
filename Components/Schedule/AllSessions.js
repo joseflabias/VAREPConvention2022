@@ -63,9 +63,7 @@ export default function AllSessions({ date, navigation }) {
               alignItems: "center",
             }}
           >
-            <Text>
-              {item.Type.toLowerCase()} · Location: {item.Location}
-            </Text>
+            <Text>Location: {item.Location}</Text>
           </View>
         </TouchableOpacity>
       </View>

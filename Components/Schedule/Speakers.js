@@ -5,22 +5,19 @@ import {
   FlatList,
   StyleSheet,
   Modal,
-  Pressable,
   TouchableOpacity,
   Alert,
-  TouchableWithoutFeedback,
-  ScrollView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { API_BASE_URL, SPEAKER_BASE_URL } from "../../config";
 import FastImage from "react-native-fast-image";
-import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import axios from "axios";
 
 export default function Speakers() {
   const speakerURL = `${API_BASE_URL}/speakers`;
 
   const [allSpeakers, setAllSpeakers] = useState([]);
+  const [selectedSpeaker, setSelectedSpeaker] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +30,7 @@ export default function Speakers() {
 
     fetchData();
   }, []);
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, index }) => {
     const imgUrl =
       item.Image != null
         ? SPEAKER_BASE_URL + item.Image
@@ -41,7 +38,10 @@ export default function Speakers() {
     return (
       <TouchableOpacity
         style={styles.item}
-        onPress={() => setModalVisible(true)}
+        onPress={() => {
+          setModalVisible(true);
+          setSelectedSpeaker(index);
+        }}
       >
         <View style={styles.imgContainer}>
           <FastImage
@@ -84,8 +84,10 @@ export default function Speakers() {
           <View style={styles.modalContainer}>
             <View style={styles.modalView}>
               <Text style={styles.text}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas eget tempus augue, a convallis velit.
+                Speaker Bio -
+                {allSpeakers[selectedSpeaker].Bio === null
+                  ? " Proud Supporter of VAREP"
+                  : allSpeakers[selectedSpeaker].Bio}
               </Text>
             </View>
           </View>
@@ -138,6 +140,13 @@ const styles = StyleSheet.create({
     elevation: 5,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 22,
+  },
+  container: {
+    flex: 1,
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 22,
   },
 });
