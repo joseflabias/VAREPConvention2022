@@ -4,6 +4,7 @@ import {
   View,
   FlatList,
   TouchableOpacity,
+  RefreshControl,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -13,13 +14,13 @@ import { API_BASE_URL } from "../../config";
 
 export default function AllSessions({ date, navigation }) {
   const [allSessions, setAllSessions] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const fetchData = async () => {
+    const result = await axios(`${API_BASE_URL}/sessions/${date}`);
+
+    setAllSessions(result.data);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(`${API_BASE_URL}/sessions/${date}`);
-
-      setAllSessions(result.data);
-    };
-
     fetchData();
   }, [date]);
 
@@ -70,13 +71,16 @@ export default function AllSessions({ date, navigation }) {
     );
   };
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       {allSessions != null && (
         <FlatList
           data={allSessions}
           style={{ paddingHorizontal: 10, marginTop: 5 }}
           renderItem={Item}
           keyExtractor={(item) => item.SessionID}
+          refreshing={refreshing} // Added pull to refesh state
+          onRefresh={fetchData} // Added pull to refresh control
+          ListFooterComponent={<View style={{ height: 100 }} />}
         />
       )}
     </View>

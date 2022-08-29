@@ -6,17 +6,17 @@ import FastImage from "react-native-fast-image";
 import axios from "axios";
 export default function SponsorScreen() {
   const sponsorURL = `${API_BASE_URL}/sponsors`;
+  const [refreshing, setRefreshing] = useState(false);
 
   const [allSponsors, setAllSponsors] = useState([]);
+  const fetchData = async () => {
+    const result = await axios(sponsorURL);
+    const sortedSponsors = result.data.sort((a, b) =>
+      a.Title.localeCompare(b.Title)
+    );
+    setAllSponsors(sortedSponsors);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(sponsorURL);
-      const sortedSponsors = result.data.sort((a, b) =>
-        a.Title.localeCompare(b.Title)
-      );
-      setAllSponsors(sortedSponsors);
-    };
-
     fetchData();
   }, []);
 
@@ -51,6 +51,9 @@ export default function SponsorScreen() {
           data={allSponsors}
           renderItem={renderItem}
           keyExtractor={(item) => item.SponsorID}
+          refreshing={refreshing} // Added pull to refesh state
+          onRefresh={fetchData} // Added pull to refresh control
+          ListFooterComponent={<View style={{ height: 100 }} />}
         />
       ) : (
         <Text>Loading</Text>

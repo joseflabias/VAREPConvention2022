@@ -12,7 +12,7 @@ import MySessions from "../Components/Schedule/MySessions";
 import Speakers from "../Components/Schedule/Speakers";
 
 const dates = [
-  { id: 0, day: "Sunday", number: "09" },
+  { id: 0, day: "Sunday", number: "9" },
   { id: 1, day: "Monday", number: "10" },
   { id: 2, day: "Tuesday", number: "11" },
 ];

@@ -20,7 +20,7 @@ export default function MySessions({ date, navigation }) {
       const jsonValue = await AsyncStorage.getItem(`@${YEAR}_MY_SESSIONS}`);
       const obj = jsonValue ? JSON.parse(jsonValue) : {};
       const list = obj["" + date] ? obj["" + date] : [];
-
+      console.log(obj);
       list.sort((a, b) => {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
@@ -112,16 +112,14 @@ export default function MySessions({ date, navigation }) {
               alignItems: "center",
             }}
           >
-            <Text>
-              {item.Type.toLowerCase()} · Location: {item.Location}
-            </Text>
+            <Text>Location: {item.Location}</Text>
           </View>
         </TouchableOpacity>
       </View>
     );
   };
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <FlatList
         data={allSessions}
         style={{ paddingHorizontal: 10, marginTop: 5 }}

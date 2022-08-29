@@ -17,8 +17,9 @@ export default function Speakers() {
   const speakerURL = `${API_BASE_URL}/speakers`;
 
   const [allSpeakers, setAllSpeakers] = useState([]);
-  const [selectedSpeaker, setSelectedSpeaker] = useState(null);
+  const [bio, setBio] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(speakerURL);
@@ -27,7 +28,6 @@ export default function Speakers() {
       );
       setAllSpeakers(sortedSpeakers);
     };
-
     fetchData();
   }, []);
   const renderItem = ({ item, index }) => {
@@ -39,8 +39,8 @@ export default function Speakers() {
       <TouchableOpacity
         style={styles.item}
         onPress={() => {
+          setBio(item.Bio);
           setModalVisible(true);
-          setSelectedSpeaker(index);
         }}
       >
         <View style={styles.imgContainer}>
@@ -64,7 +64,7 @@ export default function Speakers() {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Modal
         animationType={"slide"}
         transparent={true}
@@ -83,12 +83,8 @@ export default function Speakers() {
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalView}>
-              <Text style={styles.text}>
-                Speaker Bio -
-                {allSpeakers[selectedSpeaker].Bio === null
-                  ? " Proud Supporter of VAREP"
-                  : allSpeakers[selectedSpeaker].Bio}
-              </Text>
+              <Text style={styles.text}>Speaker Bio</Text>
+              <Text style={styles.text}>{bio}</Text>
             </View>
           </View>
         </TouchableOpacity>
