@@ -7,11 +7,13 @@ import {
   Modal,
   TouchableOpacity,
   Alert,
+  useWindowDimensions,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { API_BASE_URL, SPEAKER_BASE_URL } from "../../config";
 import FastImage from "react-native-fast-image";
 import axios from "axios";
+import RenderHTML from "react-native-render-html";
 
 export default function Speakers() {
   const speakerURL = `${API_BASE_URL}/speakers`;
@@ -62,7 +64,8 @@ export default function Speakers() {
       </TouchableOpacity>
     );
   };
-
+  const { width } = useWindowDimensions();
+  console.log(bio);
   return (
     <View style={{ flex: 1 }}>
       <Modal
@@ -83,8 +86,8 @@ export default function Speakers() {
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalView}>
-              <Text style={styles.text}>Speaker Bio</Text>
-              <Text style={styles.text}>{bio}</Text>
+              <Text style={styles.bioTitle}>Speaker Bio</Text>
+              <Text>{bio}</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -119,7 +122,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     marginHorizontal: 5,
   },
-  imgContainer: {},
   modalView: {
     margin: 20,
     backgroundColor: "white",
@@ -145,4 +147,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 22,
   },
+  bioTitle: {
+    fontFamily: "League Gothic",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
 });
+v;
