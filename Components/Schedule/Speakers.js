@@ -13,7 +13,6 @@ import React, { useState, useEffect } from "react";
 import { API_BASE_URL, SPEAKER_BASE_URL } from "../../config";
 import FastImage from "react-native-fast-image";
 import axios from "axios";
-import RenderHTML from "react-native-render-html";
 
 export default function Speakers() {
   const speakerURL = `${API_BASE_URL}/speakers`;
@@ -153,4 +152,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-v;
