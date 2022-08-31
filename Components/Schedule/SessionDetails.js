@@ -43,7 +43,7 @@ export default function SessionDetails({ props }) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.imgContainer}>
         <FastImage
           style={styles.sponsorBanner}
@@ -125,10 +125,12 @@ export default function SessionDetails({ props }) {
             <Text style={styles.detailHeading}>Presenters</Text>
             {session.presenters.map((presenter) => {
               return (
-                <Text style={styles.presenterLabel}>
-                  {"\u2022"} {presenter.Company} - {presenter.Title}:{" "}
-                  {presenter.Name}
-                </Text>
+                <View>
+                  <Text style={styles.presenterLabel}>
+                    {"\u2022"} {presenter.Company} - {presenter.Title}:
+                  </Text>
+                  <Text style={styles.presenterLabel}>{presenter.Name}</Text>
+                </View>
               );
             })}
           </View>
@@ -138,10 +140,12 @@ export default function SessionDetails({ props }) {
             <Text style={styles.detailHeading}>Speakers</Text>
             {session.speakers.map((presenter) => {
               return (
-                <Text style={styles.presenterLabel}>
-                  {"\u2022"} {presenter.Company} - {presenter.Title}:{" "}
-                  {presenter.Name}
-                </Text>
+                <View>
+                  <Text style={styles.presenterLabel}>
+                    {"\u2022"} {presenter.Company} - {presenter.Title}:
+                  </Text>
+                  <Text style={styles.presenterLabel}>{presenter.Name}</Text>
+                </View>
               );
             })}
           </View>
@@ -221,7 +225,6 @@ const styles = StyleSheet.create({
   },
   presenterLabel: {
     marginVertical: 10,
-    marginHorizontal: 5,
     fontFamily: "Roboto Slab",
     fontSize: 16,
     fontWeight: "bold",

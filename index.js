@@ -25,7 +25,7 @@ export const applyCustomCode = (externalCodeSetup) => {
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
-      fontFamily: "Liberator",
+      fontFamily: "League Gothic",
       fontSize: 30,
     },
   };
@@ -36,7 +36,7 @@ export const applyCustomCode = (externalCodeSetup) => {
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
-      fontFamily: "Liberator",
+      fontFamily: "League Gothic",
       fontSize: 30,
     },
   };
@@ -48,7 +48,7 @@ export const applyCustomCode = (externalCodeSetup) => {
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
-      fontFamily: "Liberator",
+      fontFamily: "League Gothic",
       fontSize: 30,
     },
   };
@@ -59,7 +59,7 @@ export const applyCustomCode = (externalCodeSetup) => {
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
-      fontFamily: "Liberator",
+      fontFamily: "League Gothic",
       fontSize: 30,
     },
   };
@@ -70,7 +70,7 @@ export const applyCustomCode = (externalCodeSetup) => {
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
-      fontFamily: "Liberator",
+      fontFamily: "League Gothic",
       fontSize: 30,
     },
   };
@@ -81,7 +81,7 @@ export const applyCustomCode = (externalCodeSetup) => {
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
-      fontFamily: "Liberator",
+      fontFamily: "League Gothic",
       fontSize: 30,
     },
   };

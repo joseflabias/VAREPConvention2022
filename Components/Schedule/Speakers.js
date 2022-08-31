@@ -5,23 +5,23 @@ import {
   FlatList,
   StyleSheet,
   Modal,
-  Pressable,
   TouchableOpacity,
   Alert,
-  TouchableWithoutFeedback,
-  ScrollView,
+  useWindowDimensions,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { API_BASE_URL, SPEAKER_BASE_URL } from "../../config";
 import FastImage from "react-native-fast-image";
-import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import axios from "axios";
+import RenderHTML from "react-native-render-html";
 
 export default function Speakers() {
   const speakerURL = `${API_BASE_URL}/speakers`;
 
   const [allSpeakers, setAllSpeakers] = useState([]);
+  const [bio, setBio] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(speakerURL);
@@ -30,10 +30,9 @@ export default function Speakers() {
       );
       setAllSpeakers(sortedSpeakers);
     };
-
     fetchData();
   }, []);
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, index }) => {
     const imgUrl =
       item.Image != null
         ? SPEAKER_BASE_URL + item.Image
@@ -41,7 +40,10 @@ export default function Speakers() {
     return (
       <TouchableOpacity
         style={styles.item}
-        onPress={() => setModalVisible(true)}
+        onPress={() => {
+          setBio(item.Bio);
+          setModalVisible(true);
+        }}
       >
         <View style={styles.imgContainer}>
           <FastImage
@@ -62,9 +64,10 @@ export default function Speakers() {
       </TouchableOpacity>
     );
   };
-
+  const { width } = useWindowDimensions();
+  console.log(bio);
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Modal
         animationType={"slide"}
         transparent={true}
@@ -83,10 +86,8 @@ export default function Speakers() {
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalView}>
-              <Text style={styles.text}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas eget tempus augue, a convallis velit.
-              </Text>
+              <Text style={styles.bioTitle}>Speaker Bio</Text>
+              <Text>{bio}</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -121,7 +122,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     marginHorizontal: 5,
   },
-  imgContainer: {},
   modalView: {
     margin: 20,
     backgroundColor: "white",
@@ -140,4 +140,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
+  container: {
+    flex: 1,
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 22,
+  },
+  bioTitle: {
+    fontFamily: "League Gothic",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
 });
+v;
