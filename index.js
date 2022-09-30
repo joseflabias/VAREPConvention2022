@@ -11,15 +11,76 @@ import EventActivity from "./Screens/EventActivity";
 import SponsorScreen from "./Screens/SponsorScreen";
 import SessionScreen from "./Screens/SessionScreen";
 import Notes from "./Screens/Notes";
+import HomeScreen from "./Screens/HomeScreen";
 
 import {
   HEADER_COLOR
 } from "./config";
+import HotelScreen from "./Screens/HotelScreen";
+import MediaScreen from "./Screens/MediaScreen";
+import SocialScreen from "./Screens/SocialScreen";
+import NetworkScreen from "./Screens/NetworkScreen";
+import ResourceScreen from "./Screens/ResourceScreen";
 
 export const applyCustomCode = (externalCodeSetup) => {
   // call custom code api here
   ScheduleScreen.navigationOptions = {
     title: "SCHEDULE",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "League Gothic",
+      fontSize: 30,
+    },
+  };
+  HotelScreen.navigationOptions = {
+    title: "Hotel",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "League Gothic",
+      fontSize: 30,
+    },
+  };
+  MediaScreen.navigationOptions = {
+    title: "Media",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "League Gothic",
+      fontSize: 30,
+    },
+  };
+  SocialScreen.navigationOptions = {
+    title: "Social",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "League Gothic",
+      fontSize: 30,
+    },
+  };
+  ResourceScreen.navigationOptions = {
+    title: "Resource",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "League Gothic",
+      fontSize: 30,
+    },
+  };
+  NetworkScreen.navigationOptions = {
+    title: "Network",
     headerStyle: {
       backgroundColor: HEADER_COLOR,
     },
@@ -85,11 +146,23 @@ export const applyCustomCode = (externalCodeSetup) => {
       fontSize: 30,
     },
   };
+  HomeScreen.navigationOptions = {
+    headerShown: false,
+  };
+  // MediaScreen.navigationOptions = {
+  //   headerShown: false,
+  // };
 
   externalCodeSetup.navigationApi.addNavigationRoute(
     "ScheduleScreen",
     "ScheduleScreen",
     ScheduleScreen,
+    "All"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "HomeScreen",
+    "HomeScreen",
+    HomeScreen,
     "Main"
   );
   externalCodeSetup.navigationApi.addNavigationRoute(
@@ -120,6 +193,36 @@ export const applyCustomCode = (externalCodeSetup) => {
     "Notes",
     "Notes",
     Notes,
+    "All"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "HotelScreen",
+    "HotelScreen",
+    HotelScreen,
+    "All"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "MediaScreen",
+    "MediaScreen",
+    MediaScreen,
+    "All"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "NetworkScreen",
+    "NetworkScreen",
+    NetworkScreen,
+    "All"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "ResourceScreen",
+    "ResourceScreen",
+    ResourceScreen,
+    "All"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "SocialScreen",
+    "SocialScreen",
+    SocialScreen,
     "All"
   );
 
