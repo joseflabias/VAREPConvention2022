@@ -16,11 +16,7 @@ const dates = [
   { id: 1, day: "Monday", number: "10" },
   { id: 2, day: "Tuesday", number: "11" },
 ];
-/*
 
-
-
-*/
 export default function ScheduleScreen(props) {
   const [activeItem, setActiveItem] = useState(0);
   const [activeMenu, setActiveMenu] = useState("event");
