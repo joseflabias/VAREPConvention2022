@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     marginVertical: 1,
+    alignItems: "center",
   },
   itemHeader: {
     flexDirection: "row",
@@ -175,15 +176,17 @@ const styles = StyleSheet.create({
   timeBanner: {
     width: "100%",
     justifyContent: "center",
-    backgroundColor: "#808080",
+    backgroundColor: "#18325a",
     color: "#fff",
     alignContent: "center",
     height: 40,
+    marginBottom: 5,
   },
   timeText: {
     color: "#fff",
-    fontFamily: "Liberator",
+    fontFamily: "Robot Slab",
     marginLeft: 20,
     fontSize: 20,
+    fontWeight: "bold",
   },
 });

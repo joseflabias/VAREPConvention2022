@@ -10,6 +10,8 @@ import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-community/async-storage";
 import { WEEKDAYS, MONTHS, YEAR } from "../../config";
+import { get12HourTime } from "../../Screens/utils";
+import HTMLView from "react-native-htmlview";
 
 export default function SessionDetails({ props }) {
   const session = props[0];
@@ -42,8 +44,14 @@ export default function SessionDetails({ props }) {
     }
   };
 
+  let sessionStart = get12HourTime(session.Start);
+  let sessionEnd = get12HourTime(session.End);
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentInset={{ bottom: 100 }}
+    >
       <View style={styles.imgContainer}>
         <FastImage
           style={styles.sponsorBanner}
@@ -57,16 +65,7 @@ export default function SessionDetails({ props }) {
         <Text style={styles.locationText}>{session.Location}</Text>
         <Text style={styles.timeText}>
           {WEEKDAYS[session.Start.getDay()]}, {MONTHS[session.Start.getMonth()]}{" "}
-          {session.Start.getDate()},{" "}
-          {session.Start.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}{" "}
-          -{" "}
-          {session.End.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
+          {session.Start.getDate()}, {sessionStart} - {sessionEnd}
         </Text>
       </View>
       <View style={styles.buttonContainer}>
@@ -116,7 +115,10 @@ export default function SessionDetails({ props }) {
         {session.Description != null && (
           <View>
             <Text style={styles.detailHeading}>Description</Text>
-            <Text style={styles.descText}>{session.Description}</Text>
+            <HTMLView
+              value={`<a id='desc'>${session.Description}</a>`}
+              stylesheet={stylesHTML}
+            />
           </View>
         )}
 
@@ -127,9 +129,9 @@ export default function SessionDetails({ props }) {
               return (
                 <View>
                   <Text style={styles.presenterLabel}>
-                    {"\u2022"} {presenter.Company} - {presenter.Title}:
+                    {"\u2022"} {presenter.Company} - {presenter.Title}:{" "}
+                    {presenter.Name}
                   </Text>
-                  <Text style={styles.presenterLabel}>{presenter.Name}</Text>
                 </View>
               );
             })}
@@ -142,9 +144,9 @@ export default function SessionDetails({ props }) {
               return (
                 <View>
                   <Text style={styles.presenterLabel}>
-                    {"\u2022"} {presenter.Company} - {presenter.Title}:
+                    {"\u2022"} {presenter.Company} - {presenter.Title}:{" "}
+                    {presenter.Name}
                   </Text>
-                  <Text style={styles.presenterLabel}>{presenter.Name}</Text>
                 </View>
               );
             })}
@@ -209,9 +211,11 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   detailHeading: {
-    fontFamily: "Liberator",
-    fontSize: 25,
+    fontFamily: "Roboto Slab",
+    fontSize: 27,
     marginTop: 15,
+    fontWeight: "bold",
+    color: "#9f855f",
   },
   sponsorImg: {
     width: "100%",
@@ -222,11 +226,19 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 5,
     fontFamily: "Roboto Slab",
+    fontSize: 17,
   },
   presenterLabel: {
     marginVertical: 10,
     fontFamily: "Roboto Slab",
     fontSize: 16,
     fontWeight: "bold",
+  },
+});
+
+const stylesHTML = StyleSheet.create({
+  a: {
+    fontSize: 17,
+    fontFamily: "Roboto Slab",
   },
 });

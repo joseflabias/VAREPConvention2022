@@ -11,6 +11,7 @@ import axios from "axios";
 import FastImage from "react-native-fast-image";
 import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import { API_BASE_URL } from "../../config";
+import { get12HourTime } from "../../Screens/utils";
 
 export default function AllSessions({ date, navigation }) {
   const [allSessions, setAllSessions] = useState(null);
@@ -29,15 +30,11 @@ export default function AllSessions({ date, navigation }) {
     const d = a[0].split("-");
     const t = a[1].split(":");
     const formattedStart = new Date(d[0], d[1] - 1, d[2], t[0], t[1]);
+    const newTime = get12HourTime(formattedStart);
     return (
       <View style={styles.item}>
         <View style={styles.timeBanner}>
-          <Text style={styles.timeText}>
-            {formattedStart.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
-          </Text>
+          <Text style={styles.timeText}>{newTime}</Text>
         </View>
         <TouchableOpacity
           onPress={() =>
@@ -61,7 +58,7 @@ export default function AllSessions({ date, navigation }) {
           <View
             style={{
               justifyContent: "center",
-              alignItems: "center",
+              alignItems: "flex-start",
             }}
           >
             <Text>Location: {item.Location}</Text>
@@ -92,6 +89,7 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     marginVertical: 1,
+    alignItems: "center",
   },
   itemHeader: {
     flexDirection: "row",
@@ -112,15 +110,17 @@ const styles = StyleSheet.create({
   timeBanner: {
     width: "100%",
     justifyContent: "center",
-    backgroundColor: "#808080",
+    backgroundColor: "#18325a",
     color: "#fff",
     alignContent: "center",
     height: 40,
+    marginBottom: 5,
   },
   timeText: {
     color: "#fff",
-    fontFamily: "Liberator",
+    fontFamily: "Robot Slab",
     marginLeft: 20,
     fontSize: 20,
+    fontWeight: "bold",
   },
 });

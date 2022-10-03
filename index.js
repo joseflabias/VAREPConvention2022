@@ -25,7 +25,7 @@ import ResourceScreen from "./Screens/ResourceScreen";
 export const applyCustomCode = (externalCodeSetup) => {
   // call custom code api here
   ScheduleScreen.navigationOptions = {
-    title: "SCHEDULE",
+    title: "AGENDA",
     headerStyle: {
       backgroundColor: HEADER_COLOR,
     },

@@ -26,20 +26,19 @@ export default function ScheduleScreen(props) {
       <View
         style={[
           index == activeItem ? styles.item : styles.itemInactive,
-          { width: 98 },
+          { width: 102 },
         ]}
       >
-        <Text style={styles.itemText}>{item.day}</Text>
-        <View style={styles.circle}>
-          <Text style={styles.circleText}>{item.number}</Text>
-        </View>
+        <Text style={styles.itemText}>Oct. {item.number}</Text>
       </View>
     );
   };
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ backgroundColor: "rgba(145, 144, 144, 0.7)" }}>
+      <View
+        style={{ backgroundColor: "#fff", paddingTop: 10, paddingBottom: 10 }}
+      >
         <HorizontalPicker
           data={dates}
           renderItem={renderItem}
@@ -97,7 +96,9 @@ export default function ScheduleScreen(props) {
           </Text>
         </TouchableOpacity>
       </View>
-
+      <Text style={styles.dateText}>
+        {dates[activeItem].day}, October {dates[activeItem].number}, 2022{" "}
+      </Text>
       {activeMenu == "event" && (
         <AllSessions {...props} date={dates[activeItem].number} />
       )}
@@ -111,18 +112,28 @@ export default function ScheduleScreen(props) {
 
 const styles = StyleSheet.create({
   itemText: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: "Roboto Slab",
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  dateText: {
+    color: "#18325a",
+    fontFamily: "League Gothic",
+    fontWeight: "bold",
+    fontSize: 30,
+    paddingTop: 10,
+    textAlign: "center",
   },
   item: {
-    backgroundColor: "#C4C4C4",
+    backgroundColor: "#9f855f",
     alignItems: "center",
     marginHorizontal: 5,
     paddingBottom: 5,
     borderTopWidth: 7,
   },
   itemInactive: {
-    backgroundColor: "rgba(0.769,0.769,0.769,0.10)",
+    backgroundColor: "#18325a",
     alignItems: "center",
     marginHorizontal: 5,
     paddingBottom: 5,
@@ -154,5 +165,6 @@ const styles = StyleSheet.create({
   selectedText: {
     fontSize: 19,
     fontWeight: "bold",
+    fontFamily: "Roboto Slab",
   },
 });
