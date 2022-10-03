@@ -11,7 +11,6 @@ export default function ResourceScreen() {
     <View style={{ flex: 1 }}>
       <WebView
         source={{ uri: "https://convention.varep.net/app-resource/" }}
-        scrollEnabled={false}
         injectedJavaScript={INJECTED_JAVASCRIPT}
         onMessage={() => {}}
       />
