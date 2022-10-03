@@ -1,28 +1,53 @@
-<Modal
-        animationType={"slide"}
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has now been closed.");
-          setModalVisible(!modalVisible);
-        }}
+<FastImage
+        style={styles.img}
+        source={require(`../assets/APP_HEADER_App.png`)}
+      />
+      <ScrollView
+        contentContainerStyle={{ flex: 2 }}
+        contentInset={{ bottom: 80 }}
       >
-        <TouchableOpacity
-          style={styles.container}
-          activeOpacity={1}
-          onPressOut={() => {
-            setModalVisible(false);
+        <View
+          style={{
+            flexDirection: "column",
+            flex: 1,
           }}
         >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalView}>
-              <Text style={styles.text}>
-                Speaker Bio -
-                {allSpeakers[selectedSpeaker].Bio === null
-                  ? " Proud Supporter of VAREP"
-                  : allSpeakers[selectedSpeaker].Bio}
-              </Text>
-            </View>
+          <View style={[styles.grid_row, { flex: 2 }]}>
+            <HomeSquare
+              img={AgendaBtn}
+              dst="ScheduleScreen"
+              navigation={navigation}
+            />
+            <HomeSquare
+              img={HotelBtn}
+              dst="HotelScreen"
+              navigation={navigation}
+            />
           </View>
-        </TouchableOpacity>
-      </Modal>
+          <View style={[styles.grid_row, { flex: 2 }]}>
+            <HomeSquare
+              img={SocialBtn}
+              dst="SocialScreen"
+              navigation={navigation}
+            />
+            <HomeSquare
+              img={NetworkBtn}
+              dst="NetworkScreen"
+              navigation={navigation}
+            />
+          </View>
+          <View style={[styles.grid_row, { flex: 2 }]}>
+            <HomeSquare
+              img={MediaBtn}
+              dst="MediaScreen"
+              navigation={navigation}
+            />
+            <HomeSquare
+              img={ResourceBtn}
+              dst="ResourceScreen"
+              navigation={navigation}
+            />
+          </View>
+          <View style={[styles.grid_row, { flex: 1 }]}></View>
+        </View>
+      </ScrollView>
