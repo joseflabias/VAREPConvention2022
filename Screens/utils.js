@@ -1,9 +1,9 @@
 export function get12HourTime(date) {
-  if (mytime==12){
+  if (date.getMinutes()==12){
         var hours = 12;
     }
     else{
-        var hours = mytime >= 12 ? mytime - 12 : mytime
+        var hours = date.getMinutes() >= 12 ? date.getMinutes() - 12 : date.getMinutes()
     }
     
     let minutes = date.getMinutes() == 0 ? "00" : date.getMinutes()
