@@ -102,10 +102,10 @@ export default function ScheduleScreen(props) {
       {activeMenu == "event" && (
         <AllSessions {...props} date={dates[activeItem].number} />
       )}
-      {/* {activeMenu == "me" && (
+      {activeMenu == "me" && (
         <MySessions {...props} date={dates[activeItem].number} />
       )}
-      {activeMenu == "speaker" && <Speakers />} */}
+      {activeMenu == "speaker" && <Speakers />}
     </View>
   );
 }
