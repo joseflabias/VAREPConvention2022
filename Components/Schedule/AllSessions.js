@@ -26,6 +26,7 @@ export default function AllSessions({ date, navigation }) {
   }, [date]);
 
   const Item = ({ item }) => {
+    console.log("running items");
     const a = item.Start.split(" ");
     const d = a[0].split("-");
     const t = a[1].split(":");
@@ -70,15 +71,17 @@ export default function AllSessions({ date, navigation }) {
   return (
     <View style={{ flex: 1 }}>
       {allSessions != null && (
-        <FlatList
-          data={allSessions}
-          style={{ paddingHorizontal: 10, marginTop: 5 }}
-          renderItem={Item}
-          keyExtractor={(item) => item.SessionID}
-          refreshing={refreshing} // Added pull to refesh state
-          onRefresh={fetchData} // Added pull to refresh control
-          ListFooterComponent={<View style={{ height: 100 }} />}
-        />
+        <View>
+          <FlatList
+            data={allSessions}
+            style={{ paddingHorizontal: 10, marginTop: 5 }}
+            renderItem={Item}
+            keyExtractor={(item) => item.SessionID}
+            refreshing={refreshing} // Added pull to refresh state
+            onRefresh={fetchData} // Added pull to refresh control
+            ListFooterComponent={<View style={{ height: 100 }} />}
+          />
+        </View>
       )}
     </View>
   );

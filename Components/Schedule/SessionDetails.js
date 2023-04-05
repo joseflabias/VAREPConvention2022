@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     fontSize: 27,
     marginTop: 15,
     fontWeight: "bold",
-    color: "#9f855f",
+    color: "#65B52E",
   },
   sponsorImg: {
     width: "100%",
