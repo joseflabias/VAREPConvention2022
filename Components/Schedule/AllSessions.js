@@ -54,7 +54,7 @@ export default function AllSessions({ date, navigation }) {
               resizeMode={FastImage.resizeMode.contain}
             />
             <Text style={styles.itemTitle}>{item.Title}</Text>
-            <Icon name="chevron-right" size={50} />
+            <Text style={[styles.buttonText, { fontSize: 50 }]}>﹥</Text>
           </View>
           <View
             style={{

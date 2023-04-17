@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import FastImage from "react-native-fast-image";
-import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import AsyncStorage from "@react-native-community/async-storage";
 
 import { YEAR } from "../../config";
@@ -104,7 +103,7 @@ export default function MySessions({ date, navigation }) {
               resizeMode={FastImage.resizeMode.contain}
             />
             <Text style={styles.itemTitle}>{item.Title}</Text>
-            <Icon name="chevron-right" size={50} />
+            <Text style={[styles.buttonText, { fontSize: 50 }]}>﹥</Text>
           </View>
           <View
             style={{

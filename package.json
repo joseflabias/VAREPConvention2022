@@ -20,8 +20,11 @@
     "react-native-error-boundary": "^1.1.13",
     "react-native-qrcode-svg": "^6.1.2",
     "react-native-svg": "^12.3.0",
-    "react-native-vector-icons": "^9.1.0"
+    "react-native-vector-icons": "^9.2.0"
   },
   "homepage": "https://buddyboss.com",
-  "summary": "Repo used to extend the BuddyBoss app using hooks"
+  "summary": "Repo used to extend the BuddyBoss app using hooks",
+  "devDependencies": {
+    "@types/react-native-vector-icons": "^6.4.13"
+  }
 }
