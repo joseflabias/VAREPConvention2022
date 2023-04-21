@@ -10,11 +10,11 @@ import HorizontalPicker from "@vseslav/react-native-horizontal-picker";
 import AllSessions from "../Components/Schedule/AllSessions";
 import MySessions from "../Components/Schedule/MySessions";
 import Speakers from "../Components/Schedule/Speakers";
-
+import { YEAR } from "../config";
 const dates = [
-  { id: 0, day: "Sunday", number: "9" },
-  { id: 1, day: "Monday", number: "10" },
-  { id: 2, day: "Tuesday", number: "11" },
+  { id: 0, day: "Monday", number: "25" },
+  { id: 1, day: "Tuesday", number: "26" },
+  { id: 2, day: "Wednesday", number: "27" },
 ];
 
 export default function ScheduleScreen(props) {
@@ -29,7 +29,7 @@ export default function ScheduleScreen(props) {
           { width: 102 },
         ]}
       >
-        <Text style={styles.itemText}>Oct. {item.number}</Text>
+        <Text style={styles.itemText}>Jun. {item.number}</Text>
       </View>
     );
   };
@@ -97,7 +97,7 @@ export default function ScheduleScreen(props) {
         </TouchableOpacity>
       </View>
       <Text style={styles.dateText}>
-        {dates[activeItem].day}, October {dates[activeItem].number}, 2022{" "}
+        {dates[activeItem].day}, June {dates[activeItem].number}, {YEAR}{" "}
       </Text>
       {activeMenu == "event" && (
         <AllSessions {...props} date={dates[activeItem].number} />
@@ -126,14 +126,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   item: {
-    backgroundColor: "#9f855f",
+    backgroundColor: "#18325a",
     alignItems: "center",
     marginHorizontal: 5,
     paddingBottom: 5,
     borderTopWidth: 7,
   },
   itemInactive: {
-    backgroundColor: "#18325a",
+    backgroundColor: "#65B52E",
     alignItems: "center",
     marginHorizontal: 5,
     paddingBottom: 5,

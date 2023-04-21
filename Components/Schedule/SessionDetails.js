@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import FastImage from "react-native-fast-image";
-import Icon from "react-native-vector-icons/dist/MaterialIcons";
 import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-community/async-storage";
 import { WEEKDAYS, MONTHS, YEAR } from "../../config";
@@ -77,19 +76,17 @@ export default function SessionDetails({ props }) {
           }}
         >
           <View style={styles.button}>
-            <Icon name="note-add" size={43} />
+            {/* <Icon name="sticky-note" size={43} /> */}
+            <Text style={[styles.buttonText, { fontSize: 30 }]}>📝</Text>
             <Text style={styles.buttonText}>Add Notes</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={saveToMySchedule}>
           <View>
             <View style={styles.button}>
-              <Icon
-                name="add-alert"
-                size={43}
-                color={saved ? "#ff0000" : "#000"}
-              />
-              <Text style={styles.buttonText}>Add to My Schedule</Text>
+             
+              <Text style={[styles.buttonText, { fontSize: 30 }]}>🔔</Text>
+              <Text style={[styles.buttonText]}>Add to My Schedule</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -197,6 +194,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   button: {
+    paddingTop: 15,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -215,7 +213,7 @@ const styles = StyleSheet.create({
     fontSize: 27,
     marginTop: 15,
     fontWeight: "bold",
-    color: "#9f855f",
+    color: "#65B52E",
   },
   sponsorImg: {
     width: "100%",
