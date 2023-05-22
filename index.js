@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import ScheduleScreen from "./Screens/Schedule";
 import QRPass from "./Screens/QRPass";
 import EventActivity from "./Screens/EventActivity";
@@ -13,14 +8,13 @@ import SessionScreen from "./Screens/SessionScreen";
 import Notes from "./Screens/Notes";
 import HomeScreen from "./Screens/HomeScreen";
 
-import {
-  HEADER_COLOR
-} from "./config";
+import { HEADER_COLOR } from "./config";
 import HotelScreen from "./Screens/HotelScreen";
 import MediaScreen from "./Screens/MediaScreen";
 import SocialScreen from "./Screens/SocialScreen";
 import NetworkScreen from "./Screens/NetworkScreen";
 import ResourceScreen from "./Screens/ResourceScreen";
+import HillVisits from "./Screens/HillVisits";
 
 export const applyCustomCode = (externalCodeSetup) => {
   // call custom code api here
@@ -146,6 +140,17 @@ export const applyCustomCode = (externalCodeSetup) => {
       fontSize: 30,
     },
   };
+  HillVisits.navigationOptions = {
+    title: "Hill Visits",
+    headerStyle: {
+      backgroundColor: HEADER_COLOR,
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontFamily: "League Gothic",
+      fontSize: 30,
+    },
+  };
   HomeScreen.navigationOptions = {
     headerShown: false,
   };
@@ -223,6 +228,12 @@ export const applyCustomCode = (externalCodeSetup) => {
     "SocialScreen",
     "SocialScreen",
     SocialScreen,
+    "All"
+  );
+  externalCodeSetup.navigationApi.addNavigationRoute(
+    "HillVisits",
+    "HillVisits",
+    HillVisits,
     "All"
   );
 
