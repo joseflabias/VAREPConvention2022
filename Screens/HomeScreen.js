@@ -1,4 +1,10 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import FastImage from "react-native-fast-image";
 import HomeSquare from "../Components/Schedule/HomeSquare";
@@ -17,7 +23,13 @@ export default function HomeScreen(props) {
     "http://varep.net/media/convention/app/buttons/BUTTON_Social.png";
   const AgendaBtn =
     "http://varep.net/media/convention/app/buttons/BUTTON_Agenda.png";
+  const HillBtn =
+    "http://varep.net/media/convention/app/buttons/BUTTON_Hill_Visit.jpg";
 
+  const handleHillPress = () => {
+    console.log("Hill Pressed");
+    return navigation.push("HillVisits");
+  };
   return (
     <View style={{ flex: 1 }}>
       <FastImage
@@ -73,7 +85,17 @@ export default function HomeScreen(props) {
               navigation={navigation}
             />
           </View>
-          <View style={[styles.grid_row, { flex: 1 }]}></View>
+          <View style={[styles.grid_row, { flex: 1 }]}>
+            <TouchableOpacity onPress={handleHillPress}>
+              <View style={[styles.square]}>
+                <FastImage
+                  style={{ width: "100%", height: "100%" }}
+                  source={{ uri: HillBtn }}
+                  resizeMode={FastImage.resizeMode.contain}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -87,5 +109,11 @@ const styles = StyleSheet.create({
   },
   grid_row: {
     flexDirection: "row",
+  },
+  square: {
+    backgroundColor: "#173859",
+    width: 400, // 2 x square width + space between squares
+    height: 100,
+    marginLeft: 10,
   },
 });
