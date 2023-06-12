@@ -31,89 +31,92 @@ export default function HomeScreen(props) {
     return navigation.push("HillVisits");
   };
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <FastImage
-        style={styles.img}
+        style={styles.banner}
         source={{
           uri: "http://varep.net/media/convention/app/headers/APP_HEADER.png",
         }}
+        resizeMode={FastImage.resizeMode.contain}
       />
-      <ScrollView
-        contentContainerStyle={{ flex: 2 }}
-        contentInset={{ bottom: 80 }}
-      >
-        <View
-          style={{
-            flexDirection: "column",
-            flex: 1,
-          }}
-        >
-          <View style={[styles.grid_row, { flex: 2 }]}>
-            <HomeSquare
-              img={AgendaBtn}
-              dst="ScheduleScreen"
-              navigation={navigation}
-            />
-            <HomeSquare
-              img={HotelBtn}
-              dst="HotelScreen"
-              navigation={navigation}
-            />
-          </View>
-          <View style={[styles.grid_row, { flex: 2 }]}>
-            <HomeSquare
-              img={SocialBtn}
-              dst="ActivitiesScreen"
-              navigation={navigation}
-            />
-            <HomeSquare
-              {...props}
-              img={NetworkBtn}
-              dst="NetworkScreen"
-              navigation={navigation}
-            />
-          </View>
-          <View style={[styles.grid_row, { flex: 2 }]}>
-            <HomeSquare
-              img={MediaBtn}
-              dst="MediaScreen"
-              navigation={navigation}
-            />
-            <HomeSquare
-              img={ResourceBtn}
-              dst="ResourceScreen"
-              navigation={navigation}
-            />
-          </View>
-          <View style={[styles.grid_row, { flex: 1 }]}>
-            <TouchableOpacity onPress={handleHillPress}>
-              <View style={[styles.square]}>
-                <FastImage
-                  style={{ width: "100%", height: "100%" }}
-                  source={{ uri: HillBtn }}
-                  resizeMode={FastImage.resizeMode.contain}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
+      <View style={styles.gridContainer}>
+        <View style={styles.row}>
+          <HomeSquare
+            img={AgendaBtn}
+            dst="ScheduleScreen"
+            navigation={navigation}
+          />
+          <HomeSquare
+            img={HotelBtn}
+            dst="HotelScreen"
+            navigation={navigation}
+          />
         </View>
-      </ScrollView>
+        <View style={styles.row}>
+          <HomeSquare
+            img={MediaBtn}
+            dst="MediaScreen"
+            navigation={navigation}
+          />
+          <HomeSquare
+            img={ResourceBtn}
+            dst="ResourceScreen"
+            navigation={navigation}
+          />
+        </View>
+        <View style={styles.row}>
+          <HomeSquare
+            img={SocialBtn}
+            dst="ActivitiesScreen"
+            navigation={navigation}
+          />
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Button 6</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <TouchableOpacity style={styles.bottomButton}>
+        <Text style={styles.buttonText}>Bottom Button</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  img: {
+  container: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  banner: {
     width: "100%",
-    height: "20%",
+    height: 200,
   },
-  grid_row: {
+  gridContainer: {
+    marginTop: 20,
+    paddingHorizontal: 10,
+  },
+  row: {
     flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 10,
   },
-  square: {
-    backgroundColor: "#173859",
-    width: 400, // 2 x square width + space between squares
+  button: {
+    width: "100%",
     height: 100,
-    marginLeft: 10,
+    backgroundColor: "#ccc",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonText: {
+    fontSize: 18,
+    color: "#fff",
+  },
+  bottomButton: {
+    width: "100%",
+    height: 50,
+    backgroundColor: "green",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
