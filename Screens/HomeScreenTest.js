@@ -1,33 +1,40 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
+import FastImage from "react-native-fast-image";
 
 const HomeScreenTest = () => {
   return (
     <View style={styles.container}>
       <View style={styles.gridContainer}>
-        <Image
+        <FastImage
           style={styles.image}
           source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          resizeMode={FastImage.resizeMode.contain}
         />
-        <Image
+        <FastImage
           style={styles.image}
           source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          resizeMode={FastImage.resizeMode.contain}
         />
-        <Image
+        <FastImage
           style={styles.image}
           source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          resizeMode={FastImage.resizeMode.contain}
         />
-        <Image
+        <FastImage
           style={styles.image}
           source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          resizeMode={FastImage.resizeMode.contain}
         />
-        <Image
+        <FastImage
           style={styles.image}
           source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          resizeMode={FastImage.resizeMode.contain}
         />
-        <Image
+        <FastImage
           style={styles.image}
           source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          resizeMode={FastImage.resizeMode.contain}
         />
       </View>
     </View>
