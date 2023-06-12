@@ -8,32 +8,44 @@ const HomeScreenTest = () => {
       <View style={styles.gridContainer}>
         <FastImage
           style={styles.image}
-          source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          source={{
+            uri: "http://varep.net/media/convention/app/headers/APP_HEADER.png",
+          }}
           resizeMode={FastImage.resizeMode.contain}
         />
         <FastImage
           style={styles.image}
-          source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          source={{
+            uri: "http://varep.net/media/convention/app/headers/APP_HEADER.png",
+          }}
           resizeMode={FastImage.resizeMode.contain}
         />
         <FastImage
           style={styles.image}
-          source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          source={{
+            uri: "http://varep.net/media/convention/app/headers/APP_HEADER.png",
+          }}
           resizeMode={FastImage.resizeMode.contain}
         />
         <FastImage
           style={styles.image}
-          source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          source={{
+            uri: "http://varep.net/media/convention/app/headers/APP_HEADER.png",
+          }}
           resizeMode={FastImage.resizeMode.contain}
         />
         <FastImage
           style={styles.image}
-          source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          source={{
+            uri: "http://varep.net/media/convention/app/headers/APP_HEADER.png",
+          }}
           resizeMode={FastImage.resizeMode.contain}
         />
         <FastImage
           style={styles.image}
-          source={require("http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png")}
+          source={{
+            uri: "http://varep.net/media/convention/app/headers/APP_HEADER.png",
+          }}
           resizeMode={FastImage.resizeMode.contain}
         />
       </View>
