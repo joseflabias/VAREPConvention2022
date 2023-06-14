@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, ScrollView, Text } from "react-native";
+import { View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import FastImage from "react-native-fast-image";
 
 const HomeScreen = (props) => {
