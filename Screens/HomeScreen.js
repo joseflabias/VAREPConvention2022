@@ -1,122 +1,153 @@
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
 import React from "react";
+import { View, StyleSheet, TouchableOpacity, ScrollView, Text } from "react-native";
 import FastImage from "react-native-fast-image";
-import HomeSquare from "../Components/Schedule/HomeSquare";
 
-export default function HomeScreen(props) {
+const HomeScreen = (props) => {
   const { navigation } = props;
-  const HotelBtn =
-    "http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png";
-  const MediaBtn =
-    "http://varep.net/media/convention/app/buttons/BUTTON_Media.png";
-  const NetworkBtn =
-    "http://varep.net/media/convention/app/buttons/BUTTON_Network.png";
-  const ResourceBtn =
-    "http://varep.net/media/convention/app/buttons/BUTTON_Resource.png";
-  const SocialBtn =
-    "http://varep.net/media/convention/app/buttons/BUTTON_Social.png";
-  const AgendaBtn =
-    "http://varep.net/media/convention/app/buttons/BUTTON_Agenda.png";
-  const HillBtn =
-    "http://varep.net/media/convention/app/buttons/BUTTON_Hill_Visit.jpg";
-
   const handleHillPress = () => {
-    console.log("Hill Pressed");
     return navigation.push("HillVisits");
   };
   return (
-    <View style={styles.container}>
-      <FastImage
-        style={styles.banner}
-        source={{
-          uri: "http://varep.net/media/convention/app/headers/APP_HEADER.png",
-        }}
-        resizeMode={FastImage.resizeMode.contain}
-      />
-      <View style={styles.gridContainer}>
-        <View style={styles.row}>
-          <HomeSquare
-            img={AgendaBtn}
-            dst="ScheduleScreen"
-            navigation={navigation}
+    <ScrollView
+      contentContainerStyle={ styles.container}
+    >
+      <View style={styles.content}>
+        <FastImage
+          style={styles.imagebib}
+          source={{
+            uri: "http://varep.net/media/convention/app/buttons/headerb.jpg",
+          }}
+        />
+        <TouchableOpacity
+          style={styles.buttonhill}
+          onPress={() => handleHillPress()}
+        >
+          <FastImage
+            style={styles.hills}
+            source={{
+              uri: "http://varep.net/media/convention/app/buttons/hillv.jpg",
+            }}
           />
-          <HomeSquare
-            img={HotelBtn}
-            dst="HotelScreen"
-            navigation={navigation}
-          />
-        </View>
-        <View style={styles.row}>
-          <HomeSquare
-            img={MediaBtn}
-            dst="MediaScreen"
-            navigation={navigation}
-          />
-          <HomeSquare
-            img={ResourceBtn}
-            dst="ResourceScreen"
-            navigation={navigation}
-          />
-        </View>
-        <View style={styles.row}>
-          <HomeSquare
-            img={SocialBtn}
-            dst="ActivitiesScreen"
-            navigation={navigation}
-          />
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Button 6</Text>
+        </TouchableOpacity>
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("ScheduleScreen")}
+          >
+            <FastImage
+              style={styles.image}
+              source={{
+                uri: "http://varep.net/media/convention/app/buttons/BUTTON_Agenda.png",
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("HotelScreen")}
+          >
+            <FastImage
+              style={styles.image}
+              source={{
+                uri: "http://varep.net/media/convention/app/buttons/BUTTON_Hotel.png",
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("ActivitiesScreen")}
+          >
+            <FastImage
+              style={styles.image}
+              source={{
+                uri: "http://varep.net/media/convention/app/buttons/BUTTON_Social.png",
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("NetworkScreen")}
+          >
+            <FastImage
+              style={styles.image}
+              source={{
+                uri: "http://varep.net/media/convention/app/buttons/BUTTON_Network.png",
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("MediaScreen")}
+          >
+            <FastImage
+              style={styles.image}
+              source={{
+                uri: "http://varep.net/media/convention/app/buttons/BUTTON_Media.png",
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("ResourceScreen")}
+          >
+            <FastImage
+              style={styles.image}
+              source={{
+                uri: "http://varep.net/media/convention/app/buttons/BUTTON_Resource.png",
+              }}
+            />
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity style={styles.bottomButton}>
-        <Text style={styles.buttonText}>Bottom Button</Text>
-      </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
+    flexGrow: 1,
+  },
+  content: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  banner: {
-    width: "100%",
-    height: 200,
-  },
-  gridContainer: {
-    marginTop: 20,
-    paddingHorizontal: 10,
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: "center",
+  text: {
+    fontSize: 16,
     marginBottom: 10,
   },
+  gridContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
   button: {
-    width: "100%",
-    height: 100,
-    backgroundColor: "#ccc",
+    width: "50%",
     justifyContent: "center",
     alignItems: "center",
+    padding: 5,
   },
-  buttonText: {
-    fontSize: 18,
-    color: "#fff",
+  image: {
+    width: 140,
+    height: 140,
+    marginBottom: 5,
   },
-  bottomButton: {
+  imagebib: {
     width: "100%",
-    height: 50,
-    backgroundColor: "green",
+    height: 220,
+    marginBottom: 5,
+  },
+  buttonhill: {
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    padding: 5,
+  },
+  hills: {
+    width: "100%",
+    height: 120,
+    marginBottom: 5,
   },
 });
+
+export default HomeScreen;
