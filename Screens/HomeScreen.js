@@ -10,6 +10,7 @@ const HomeScreen = (props) => {
   return (
     <ScrollView
       contentContainerStyle={ styles.container}
+      contentInset={{ bottom: 80 }}
     >
       <View style={styles.content}>
         <FastImage
