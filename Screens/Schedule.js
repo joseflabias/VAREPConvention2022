@@ -12,9 +12,9 @@ import MySessions from "../Components/Schedule/MySessions";
 import Speakers from "../Components/Schedule/Speakers";
 import { YEAR } from "../config";
 const dates = [
-  { id: 0, day: "Monday", number: "25" },
-  { id: 1, day: "Tuesday", number: "26" },
-  { id: 2, day: "Wednesday", number: "27" },
+  { id: 0, day: "Sunday", number: "25" },
+  { id: 1, day: "Monday", number: "26" },
+  { id: 2, day: "Tuesday", number: "27" },
 ];
 
 export default function ScheduleScreen(props) {
