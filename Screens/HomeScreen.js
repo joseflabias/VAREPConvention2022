@@ -9,10 +9,10 @@ const HomeScreen = (props) => {
   };
   return (
     <ScrollView
-      contentContainerStyle={{ flex: 1 }}
+      contentContainerStyle={ styles.container}
       contentInset={{ bottom: 80 }}
     >
-      <View style={styles.container}>
+      <View style={styles.content}>
         <FastImage
           style={styles.imagebib}
           source={{
@@ -106,9 +106,16 @@ const HomeScreen = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    flexGrow: 1,
+  },
+  content: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 16,
+    marginBottom: 10,
   },
   gridContainer: {
     flexDirection: "row",
