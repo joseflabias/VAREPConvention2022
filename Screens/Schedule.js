@@ -12,9 +12,9 @@ import MySessions from "../Components/Schedule/MySessions";
 import Speakers from "../Components/Schedule/Speakers";
 import { YEAR } from "../config";
 const dates = [
-  { id: 0, day: "Sunday", number: "25" },
-  { id: 1, day: "Monday", number: "26" },
-  { id: 2, day: "Tuesday", number: "27" },
+  { id: 0, day: "Sunday", number: "15" },
+  { id: 1, day: "Monday", number: "16" },
+  { id: 2, day: "Tuesday", number: "17" },
 ];
 
 export default function ScheduleScreen(props) {
@@ -29,7 +29,7 @@ export default function ScheduleScreen(props) {
           { width: 102 },
         ]}
       >
-        <Text style={styles.itemText}>Jun. {item.number}</Text>
+        <Text style={styles.itemText}>Oct. {item.number}</Text>
       </View>
     );
   };
@@ -97,7 +97,7 @@ export default function ScheduleScreen(props) {
         </TouchableOpacity>
       </View>
       <Text style={styles.dateText}>
-        {dates[activeItem].day}, June {dates[activeItem].number}, {YEAR}{" "}
+        {dates[activeItem].day}, October {dates[activeItem].number}, {YEAR}{" "}
       </Text>
       {activeMenu == "event" && (
         <AllSessions {...props} date={dates[activeItem].number} />
