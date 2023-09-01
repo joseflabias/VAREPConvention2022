@@ -19,18 +19,6 @@ const HomeScreen = (props) => {
             uri: "http://varep.net/media/convention/app/buttons/headerb.jpg",
           }}
         />
-        <TouchableOpacity
-          style={styles.buttonhill}
-          onPress={() => handleHillPress()}
-        >
-          <FastImage
-            style={styles.hills}
-            source={{
-              uri: "http://varep.net/media/convention/app/buttons/hillv.jpg",
-            }}
-          />
-        </TouchableOpacity>
-
         <View style={styles.gridContainer}>
           <TouchableOpacity
             style={styles.button}
