@@ -106,6 +106,7 @@ export default function ScheduleScreen(props) {
         <MySessions {...props} date={dates[activeItem].number} />
       )}
       {activeMenu == "speaker" && <Speakers />}
+      <Text style={styles.darkText}>Android users: Please disable the dark theme in your phone settings to load the correct agenda text color.</Text>
     </View>
   );
 }
@@ -118,6 +119,13 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   dateText: {
+    color: "#18325a",
+    fontFamily: "League Gothic",
+    fontSize: 15,
+    paddingTop: 10,
+    textAlign: "center",
+  },
+  darkText: {
     color: "#18325a",
     fontFamily: "League Gothic",
     fontWeight: "bold",
