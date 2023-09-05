@@ -118,14 +118,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#fff",
   },
-  dateText: {
+  darkText: {
     color: "#18325a",
     fontFamily: "League Gothic",
     fontSize: 15,
     paddingTop: 10,
     textAlign: "center",
   },
-  darkText: {
+  dateText: {
     color: "#18325a",
     fontFamily: "League Gothic",
     fontWeight: "bold",
